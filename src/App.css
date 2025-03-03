@@ -1,0 +1,41 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+ 
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin: 20px;
+}
+ 
+.square {
+  width: 80px;
+  height: 80px;
+  background: #213547;
+  border: 2px solid #999;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+ 
+.status {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+ 
+.reset-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
