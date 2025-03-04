@@ -11,6 +11,14 @@ describe('Tic Tac Toe testing', () => {
     });
   });
 
+  it('should not allow playing on the same square twice', () => {
+    cy.get('[data-testid="square-0"]').click();
+    cy.get('[data-testid="status"]').should('contain', 'Next player: O');
+ 
+    cy.get('[data-testid="square-0"]').click();
+    cy.get('[data-testid="status"]').should('contain', 'Next player: O');
+  });
+
   it('should players move alternately', () => {
     cy.get('[data-testid="square-0"]').click();
     cy.get('[data-testid="square-0"]').should('contain', 'X');
@@ -23,9 +31,9 @@ describe('Tic Tac Toe testing', () => {
 
   it('should declare a winner when three in a row', () => {
     cy.get('[data-testid="square-0"]').click(); //X
-    cy.get('[data-testid="square-1"]').click();
+    cy.get('[data-testid="square-1"]').click(); //O
     cy.get('[data-testid="square-3"]').click(); //X
-    cy.get('[data-testid="square-4"]').click();
+    cy.get('[data-testid="square-4"]').click(); //O
     cy.get('[data-testid="square-6"]').click(); //X
 
     cy.get('[data-testid="status"]').should('contain', 'Winner: X');
@@ -34,9 +42,9 @@ describe('Tic Tac Toe testing', () => {
 
   it('should reset the game when reset button is clicked', () => {
     cy.get('[data-testid="square-0"]').click(); //X
-    cy.get('[data-testid="square-1"]').click();
+    cy.get('[data-testid="square-1"]').click(); //O
     cy.get('[data-testid="square-3"]').click(); //X
-    cy.get('[data-testid="square-4"]').click();
+    cy.get('[data-testid="square-4"]').click(); //O
     cy.get('[data-testid="square-6"]').click(); //X
 
     cy.get('[data-testid="status"]').should('contain', 'Winner: X');
@@ -46,12 +54,4 @@ describe('Tic Tac Toe testing', () => {
       cy.wrap($square).should('be.empty');
     });
   });
-
-  it('should not allow playing on the same square twice', () => {
-    cy.get('[data-testid="square-0"]').click();
-    cy.get('[data-testid="status"]').should('contain', 'Next player: O');
- 
-    cy.get('[data-testid="square-0"]').click();
-    cy.get('[data-testid="status"]').should('contain', 'Next player: O');
-  })
-})
+});
